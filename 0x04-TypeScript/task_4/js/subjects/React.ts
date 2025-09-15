@@ -1,21 +1,15 @@
-/// <reference path="./Teacher.ts" />
-/// <reference path="./Subject.ts" />
+import { Teacher } from './Teacher';
+import { Subject } from './Subject';
 
-namespace Subjects {
-  export interface Teacher {
-    experienceTeachingReact?: number;
+export class React extends Subject {
+  getRequirements(): string {
+    return 'Here is the list of requirements for React';
   }
 
-  export class React extends Subject {
-    getRequirements(): string {
-      return 'Here is the list of requirements for React';
+  getAvailableTeacher(): string {
+    if (!this.teacher || !(this.teacher as any).experienceTeachingReact) {
+      return 'No available teacher';
     }
-
-    getAvailableTeacher(): string {
-      if (!this.teacher || !this.teacher.experienceTeachingReact) {
-        return 'No available teacher';
-      }
-      return `Available Teacher: ${this.teacher.firstName}`;
-    }
+    return `Available Teacher: ${this.teacher.firstName}`;
   }
 }

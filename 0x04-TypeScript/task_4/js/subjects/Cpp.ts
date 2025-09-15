@@ -1,22 +1,15 @@
-/// <reference path="./Teacher.ts" />
-/// <reference path="./Subject.ts" />
+import { Teacher } from './Teacher';
+import { Subject } from './Subject';
 
-namespace Subjects {
-  // declaration merging: add optional property
-  export interface Teacher {
-    experienceTeachingC?: number;
+export class Cpp extends Subject {
+  getRequirements(): string {
+    return 'Here is the list of requirements for Cpp';
   }
 
-  export class Cpp extends Subject {
-    getRequirements(): string {
-      return 'Here is the list of requirements for Cpp';
+  getAvailableTeacher(): string {
+    if (!this.teacher || !(this.teacher as any).experienceTeachingC) {
+      return 'No available teacher';
     }
-
-    getAvailableTeacher(): string {
-      if (!this.teacher || !this.teacher.experienceTeachingC) {
-        return 'No available teacher';
-      }
-      return `Available Teacher: ${this.teacher.firstName}`;
-    }
+    return `Available Teacher: ${this.teacher.firstName}`;
   }
 }
