@@ -5,9 +5,11 @@
 /// <reference path="./subjects/React.ts" />
 
 // Create and export the subject instances
-export const cpp = new Subjects.Cpp();
-export const java = new Subjects.Java();
-export const react = new Subjects.React();
+const cpp = new Subjects.Cpp();
+const java = new Subjects.Java();
+const react = new Subjects.React();
+
+export { cpp, java, react };
 
 // Teacher with C-experience
 export const cTeacher: Subjects.Teacher = {
